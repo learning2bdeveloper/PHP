@@ -1,0 +1,48 @@
+
+* { 
+    color: pink;
+    background-color: black;
+}
+
+.box-head {
+    display: flex;
+    justify-content: center;
+}
+
+.box-head h1   {
+    font-size: 100px;
+    height: 50px;
+}
+
+
+.box-1 div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.box-1 h2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+input {
+    height: 20px;
+    font-size: 15px;
+    border-color: pink;
+    border-radius: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+button {
+    margin-top: 5px;
+    font-size: 15px;
+    border-color: pink;
+    border-radius: 20px;
+    padding: 5px;
+}
