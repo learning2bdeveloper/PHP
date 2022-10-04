@@ -16,7 +16,7 @@ class SignupController extends Signup{
 
     }
 
-    private function signUser() {
+    public function signupUser() {
         if($this->emptyInput() == false) {
             header("Location: ../_index.php?error=emptyinput");
             exit();

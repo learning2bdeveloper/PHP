@@ -10,12 +10,14 @@ if(isset($_POST['signup'])) {
 
     //Instantiate SignupContr class
     include '../classes/database.classes.php';
-    include '../classes/signup.controller..php';
     include '../classes/signup.classes.php';
+    include '../classes/signup.controller.php';
     
     $signup = new SignupController($uid, $pwd, $pwdRepeat, $email);
 
     //Running Error Handlers and users signup 
+
+    $signup->signupUser();
 
     //Going back to front page
 }
