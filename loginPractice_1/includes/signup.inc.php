@@ -9,15 +9,16 @@ if(isset($_POST['signup'])) {
     $email = $_POST['email'];
 
     //Instantiate SignupContr class
-    include '../classes/database.classes.php';
-    include '../classes/signup.classes.php';
-    include '../classes/signup.controller.php';
+    include_once '../classes/database.classes.php';
+    include_once '../classes/signup.classes.php';
+    include_once '../classes/signup.controller.php';
     
-    $signup = new SignupController($uid, $pwd, $pwdRepeat, $email);
+    $signup = new SignupController($uid, $pwd, $repeatPwd, $email);
 
     //Running Error Handlers and users signup 
 
     $signup->signupUser();
 
     //Going back to front page
+    header('Location: ../signupIndex.php?error=none');
 }

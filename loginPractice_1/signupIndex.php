@@ -22,7 +22,7 @@
     <h2>Sign up</h2>
     <div>
         <Label for="Username">Username</Label>
-    <form action="includes/signup.inc.php" method="post" autocomplete="off"> 
+    <form action="/includes/signup.inc.php" method="POST" autocomplete="off"> 
             <input type="text" name="uid"> <!-- false para nd na mag pakita ang mga na entered users-->
     </div>
 

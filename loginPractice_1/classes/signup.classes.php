@@ -12,7 +12,7 @@ class Signup extends Database {
         $stmt->bindParam('l', $email);
         if(!$stmt->execute()) {
             $stmt = null;
-            header("Location: ../_index.php?error=stmtfailed");
+            header("location: ../_index.php?error=stmtfailed");
             exit();
         }
         $stmt = null;
@@ -24,7 +24,7 @@ class Signup extends Database {
 
         if(!$stmt->execute()) {
             $stmt = null;
-            header("Location: ../_index.php?error=stmtfailed");
+            header("location: ../_index.php?error=stmtfailed");
             exit();
         }
 

@@ -7,38 +7,38 @@ class SignupController extends Signup{
     private $repeatPwd;
     private $email;
 
-    public function __construct($uid, $pwd, $repeatPwd, $email) {
+    public function __construct($uid, $pwd, $repeatPWD, $email) {
 
         $this->uid = $uid;
         $this->pwd = $pwd;
-        $this->repeatPwd = $repeatPwd;
+        $this->repeatPwd = $repeatPWD;
         $this->email = $email;
 
     }
 
     public function signupUser() {
         if($this->emptyInput() == false) {
-            header("Location: ../_index.php?error=emptyinput");
+            header("location: ../_index.php?error=emptyinput");
             exit();
         }
 
         if($this->invalidUid() == false) {
-            header("Location: ../_index.php?error=invalidUid");
+            header("location: ../_index.php?error=invalidUid");
             exit();
         }
 
         if($this->invalidEmail() == false) {
-            header("Location: ../_index.php?error=invalidEmail");
+            header("location: ../_index.php?error=invalidEmail");
             exit();
         }
 
         if($this->pwdMatch() == false) {
-            header("Location: ../_index.php?error=passwordnotmatch");
+            header("location: ../_index.php?error=passwordnotmatch");
             exit();
         }
 
         if($this->uidTakenCheck() == false) {
-            header("Location: ../_index.php?error=userhasbeentaken");
+            header("location: ../_index.php?error=userhasbeentaken");
             exit();
         }
 
