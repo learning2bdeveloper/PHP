@@ -20,5 +20,5 @@ if(isset($_POST['signup'])) {
     $signup->signupUser();
 
     //Going back to front page
-    header('Location: ../signupIndex.php?error=none');
+    header("location: ../signupIndex.php?error=none");
 }

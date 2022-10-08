@@ -18,7 +18,7 @@
 <h2>Log in</h2>
     <div>
         <Label for="Username">Username</Label>
-    <form action="" method="post" autocomplete="off"> <!-- false para nd na mag pakita ang mga na entered users-->
+    <form action="includes/login.inc.php" method="post" autocomplete="off"> <!-- false para nd na mag pakita ang mga na entered users-->
             <input type="text" name="uid"> 
         </form>
     </div>
