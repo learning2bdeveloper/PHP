@@ -23,7 +23,7 @@ class LoginController extends Login{
     // checking if one user input is not filled.
 private function emptyInput() {
     $result = "";
-    if(empty($this->uid) || empty($this->pwd) || empty($this->repeatPwd) || empty($this->email)) {
+    if(empty($this->uid) || empty($this->pwd)) {
         $result = false;
     }
     else {
@@ -32,6 +32,6 @@ private function emptyInput() {
     return $result;
     }
 
-}
+} 
 
 ?>

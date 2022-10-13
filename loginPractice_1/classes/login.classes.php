@@ -3,7 +3,7 @@
 class Login extends Database {
 
     protected function getUser($uid, $pwd) {
-        $stmt = $this->connect()->prepare("SELECT users_pwd FROM users WHERE users_uid = :u OR users_email = :e;");
+        $stmt = $this->connect()->prepare("SELECT users_pwd FROM users WHERE users_uid = :u OR users_email = :u");
 
         $stmt->bindParam('u', $uid);
 
@@ -21,20 +21,21 @@ class Login extends Database {
             exit();
         }
 
-        $pwdHashed = $stmt->fetchAll();
-        $checkedpwd = password_verify($pwd, $pwdHashed[0]['users_pwd']);
+         $pwdHashed = $stmt->fetchAll();
+         $checkedpwd = $pwdHashed[0]['users_pwd'];
+        //$checkedpwd = $pwdHashed;//password_verify($pwd, $pwdHashed[0]['users_pwd']);
         
-        if($checkedpwd == false) {
+        if($checkedpwd !== md5($pwd)) {
 
             $stmt = null;
             header("location: ../loginIndex.php?error=wrongpassword");
             exit();
-        }else if($checkedpwd == true) {
 
-            $stmt = $this->connect()->prepare("SELECT * FROM users WHERE users_uid = :u OR users_email = :e AND users_pwd = :p;");
+        }else if($checkedpwd === md5($pwd)) {
+
+            $stmt = $this->connect()->prepare("SELECT * FROM users WHERE users_uid = :u OR users_email = :u AND users_pwd = :p;");
 
             $stmt->bindParam('u', $uid);
-            $stmt->bindParam('e', $uid);
             $stmt->bindParam('p', $pwd);
 
             if(!$stmt->execute()) {
@@ -49,16 +50,19 @@ class Login extends Database {
                 exit();
             }
             
-            $user = $stmt->fetchAll();
+            $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
             session_start();
-            $_SESSION["userid"] = $user[0]["user_id"];
-            $_SESSION["useruid"] = $user[0]["user_uid"];
+            $_SESSION['userid'] = $data[0]['users_id'];
+            $_SESSION['useruid'] = $data[0]['users_uid'];
 
-            $stmt = null;
+            if($_SESSION["useruid"] == null) {
+                header("location: ../_index.php?error=sessionNull");
+                exit();
+            }
+         $stmt = null;
         }
-        
-
+       
     }
 }
 ?>

@@ -1,3 +1,4 @@
+<?php session_start()?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,26 +17,33 @@
 <div class="box-1">
 
 <h2>Log in</h2>
-    <div>
+            <?php
+                if(isset($_SESSION["useruid"])) 
+                {
+            ?>
+                <h1>Welcome, </h1> <a href="#"></a><?php echo $_SESSION["useruid"];?>
+                <a href="includes/logout.inc.php">Logout</a>
+                    
+            <?php
+                }
+            ?>
+        
+    <form method="POST" action="includes/login.inc.php" autocomplete="off"> <!-- false para nd na mag pakita ang mga na entered users-->
+    <div>  
         <Label for="Username">Username</Label>
-    <form action="includes/login.inc.php" method="post" autocomplete="off"> <!-- false para nd na mag pakita ang mga na entered users-->
             <input type="text" name="uid"> 
-        </form>
     </div>
 
     <div>
         <label for="Password">Password</label>
-    <form action="" method="post">
             <input type="password" name="pwd">
-        </form>
+            <a href="includes/logout.inc.php">Logout</a>
     </div>
 
     <div class="button-login">
-        <form action="" method="post">
             <button type="submit" name="login">Login</button>
-        </form>
     </div>
-
+    </form>
 </div>
 </body>
 </html>
